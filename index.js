@@ -8,7 +8,7 @@ class Transaction {
   commit() {
 
     if (!this.isAllowed()) {
-      return console.log(`NSF, Balance: ${this.account.balance}`)
+      return console.log(`NSF. Balance: ${this.account.balance}`);
     }
 
     this.time = new Date();
@@ -27,11 +27,7 @@ class Withdrawal extends Transaction {
 
   isAllowed() {
 
-    if (this.account.balance - this.amount >= 0) {
-      return true;
-    }
-
-    return false;
+    return (this.account.balance - this.amount >= 0)
 
   }
 
@@ -75,12 +71,7 @@ class Account {
 }
 
 
-
-
-// DRIVER CODE BELOW
-// We use the code below to "drive" the application logic above and make sure it's working as expected
-
-const myAccount = new Account("snow-patrol");
+const myAccount = new Account("Bruh-Mode");
 
 console.log('before transactions:\n', myAccount, myAccount.balance, '\n');
 const t1 = new Deposit(120.00, myAccount);
